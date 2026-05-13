@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router";
 
 export default function SupplierCart({supplier}){
-        console.log(supplier)
+        // console.log(supplier)
 
     const navigate=useNavigate()
 
