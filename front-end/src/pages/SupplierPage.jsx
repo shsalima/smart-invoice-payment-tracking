@@ -75,19 +75,16 @@ export default function SupplierPage(){
     
     
     return(
-        <div>
+        <div className="min-h-screen bg-[#F9F9F8] p-8">
             <SupplierHero loading={loading}/>
-            {suppliers.map((supplier)=>(
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+                {suppliers.map((supplier)=>(
+                    <SupplierCart key={supplier._id} supplier={supplier}/>
+                ))}
+            </div>
 
-                <SupplierCart key={supplier._id} supplier={supplier}/>
-            ))
-
-            }
-            <AjouterSupplier
-             isOpen={isModalOpen}
-             onClose={()=>setIsModalOpen(false)}
-             />
-
+            {/* <AjouterSupplier ... /> */}
         </div>
     )
 }
