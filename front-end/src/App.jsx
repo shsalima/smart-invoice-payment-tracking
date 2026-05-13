@@ -12,7 +12,7 @@ function App() {
                 <AppHeader />
                 <div className="container py-6">
                     <Routes>
-                        <Route path="/" element={<HomePage />} />
+                        <Route path="/home" element={<HomePage />} />
                     </Routes>
                 </div>
             </div>
