@@ -4,7 +4,7 @@
 
 export default function SupplierHero({loading}){
     return(
-        <div className="min-h-screen bg-[#F9F9F8] p-8">
+        <div className=" bg-[#F9F9F8] p-8">
             <div className="flex justify-between items-end mb-8">
                 <div>
                     <h1 className="text-4xl font-bold text-gray-900 mb-2">Suppliers</h1>
