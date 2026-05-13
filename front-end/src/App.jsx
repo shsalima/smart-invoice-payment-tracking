@@ -1,15 +1,24 @@
-import InvoiceTable from "./components/InvoicesComponents/InvoicesTable";
-import { NewInvoiceModal } from "./components/InvoicesComponents/NewInvoiceModal";
+import { Routes, Route } from "react-router";
+import SideBar from "./components/layout/SideBar";
+import AppHeader from "./components/layout/AppHeader";
+import HomePage from "./pages/HomePage";
 import { InvoicePage } from "./pages/InvoicePage";
 
 function App() {
   return (
-    <>
-      <h1>Hello World!</h1>
-      <InvoicePage />
-      <InvoiceTable />
-      <NewInvoiceModal />
-    </>
+    <div className="flex">
+      <SideBar />
+
+      <div className="flex-1">
+        <AppHeader />
+        <div className="container py-6">
+          <Routes>
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/invoices" element={<InvoicePage />} />
+          </Routes>
+        </div>
+      </div>
+    </div>
   );
 }
 
