@@ -1,16 +1,86 @@
-# React + Vite
+# Smart Invoice API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+In the day-to-day operations of businesses and freelancers, managing supplier invoices quickly becomes complex. It's often difficult to track spending, identify pending or overdue invoices, and gain a clear understanding of supplier relationships.
 
-Currently, two official plugins are available:
+**Smart Invoice** is a secure backend RESTful API designed to help users manage their list of suppliers, record and track received invoices, and handle partial or full payments while maintaining strict data isolation.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+-   **Secure Authentication**: JWT-based registration and login system.
+-   **Supplier Management**: Complete CRUD operations for managing business partners.
+-   **Invoice Tracking**: Automatic status tracking (unpaid, partially paid, paid) and due date management.
+-   **Payment Processing**: Record full or partial payments with validation against the total invoice amount.
+-   **Data Isolation**: Multi-tenant architecture ensuring clients only access their own data.
+-   **Analytics & Dashboard**: Real-time statistics per supplier and overall financial overview.
+-   **Admin Oversight**: Dedicated administrative routes to monitor platform-wide activity.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+-   **Runtime**: Node.js
+-   **Framework**: Express.js
+-   **Database**: MongoDB (with Mongoose)
+-   **Security**: JSON Web Tokens (JWT), Bcrypt, and Middleware-based Authorization
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🏗️ Architecture & Constraints
+
+-   A **Supplier** belongs to a single customer.
+-   An **Invoice** belongs to only one customer and one supplier.
+-   **Invoice Statuses**:
+    -   `unpaid`: No payments recorded.
+    -   `partially_paid`: Partial payment received (total < invoice amount).
+    -   `paid`: Total payments equal the invoice amount.
+-   **Rules**:
+    -   Invoices can only be modified if they are not fully paid.
+    -   Invoices can only be deleted if no payments are associated with them.
+
+## 🛣️ API Endpoints
+
+### Authentication
+
+| Method | Endpoint             | Description                    |
+| :----- | :------------------- | :----------------------------- |
+| POST   | `/api/auth/register` | Register a new client          |
+| POST   | `/api/auth/login`    | Login and obtain JWT token     |
+| GET    | `/api/auth/me`       | Retrieve authenticated profile |
+
+### Supplier Management
+
+| Method | Endpoint             | Description              |
+| :----- | :------------------- | :----------------------- |
+| POST   | `/api/suppliers`     | Create a new supplier    |
+| GET    | `/api/suppliers`     | List all your suppliers  |
+| GET    | `/api/suppliers/:id` | View a specific supplier |
+| PUT    | `/api/suppliers/:id` | Modify a supplier        |
+| DELETE | `/api/suppliers/:id` | Delete a supplier        |
+
+### Invoice Management
+
+| Method | Endpoint            | Description                                     |
+| :----- | :------------------ | :---------------------------------------------- |
+| POST   | `/api/invoices`     | Create an invoice (supplierId, amount, dueDate) |
+| GET    | `/api/invoices`     | List all your invoices (with filters)           |
+| GET    | `/api/invoices/:id` | View a specific invoice                         |
+| PUT    | `/api/invoices/:id` | Modify an invoice (if not fully paid)           |
+| DELETE | `/api/invoices/:id` | Delete an invoice (if no payment associated)    |
+
+### Payment Management
+
+| Method | Endpoint                     | Description                            |
+| :----- | :--------------------------- | :------------------------------------- |
+| POST   | `/api/invoices/:id/payments` | Record a payment (amount, paymentDate) |
+| GET    | `/api/invoices/:id/payments` | List the payments for an invoice       |
+
+### Monitoring & Analysis
+
+| Method | Endpoint                   | Description                                      |
+| :----- | :------------------------- | :----------------------------------------------- |
+| GET    | `/api/suppliers/:id/stats` | Statistics for a supplier (invoices, amounts, %) |
+| GET    | `/api/dashboard`           | Overview (total invoices, expenses, delays)      |
+
+### Admin Routes (Protected)
+
+| Method | Endpoint                           | Description                 |
+| :----- | :--------------------------------- | :-------------------------- |
+| GET    | `/api/admin/clients`               | List all registered clients |
+| GET    | `/api/admin/clients/:id/suppliers` | View a client's suppliers   |
+| GET    | `/api/admin/clients/:id/invoices`  | View a client's invoices    |
