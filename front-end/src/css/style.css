@@ -8,6 +8,7 @@
 body {
   background: #e2ddd8;
   padding: 28px;
+  font-family: "DM Sans", sans-serif;
 }
 /* .header-container {
   display: flex;
@@ -183,4 +184,70 @@ body {
   color: #16a34a;
   background-color: #f0fdf4;
   border: 1px solid #bbf7d0;
+}
+
+/* ------------------ADD NEW INVOICE MODAL------------------ */
+.modal {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px;
+  width: 520px;
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  transition: transform 0.2s;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.modal-header button {
+  background-color: #f0ede8;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: none;
+  color: #6b6560;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.modal-header span {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b6560;
+  margin-bottom: 6px;
+}
+.form-input {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #ccc7c0;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #ffffff;
+  color: #1a1714;
+  transition: border-color 0.15s;
 }
