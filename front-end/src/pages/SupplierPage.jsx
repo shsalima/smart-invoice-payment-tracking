@@ -1,3 +1,4 @@
+import AjouterSupplier from "../components/AjouterSupplier";
 import SupplierCart from "../components/suppliers/SupplierCart";
 import SupplierHero from "../components/suppliers/SupplierHero";
 import { useEffect, useState } from "react";
@@ -41,8 +42,31 @@ export default function SupplierPage(){
             "__v": 0
         }
     ]
-    const [loading,setLoading]=useState(true)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const [suppliers,setSuppliers]=useState([])
+    const [loading,setLoading]=useState(true)
+    const[isModalOpen,setIsModalOpen]=useState(false)
+
 
     useEffect(()=>{
         setSuppliers(suppliersData)
@@ -59,6 +83,10 @@ export default function SupplierPage(){
             ))
 
             }
+            <AjouterSupplier
+             isOpen={isModalOpen}
+             onClose={()=>setIsModalOpen(false)}
+             />
 
         </div>
     )
