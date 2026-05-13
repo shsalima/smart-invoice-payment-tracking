@@ -1,8 +1,22 @@
+import { Routes, Route } from "react-router";
+import SideBar from "./components/layout/SideBar";
+import AppHeader from "./components/layout/AppHeader";
+import HomePage from "./pages/HomePage";
+
 function App() {
     return (
-        <>
-            <h1>Hello World!</h1>
-        </>
+        <div className="flex">
+            <SideBar />
+
+            <div className="flex-1">
+                <AppHeader />
+                <div className="container py-6">
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                    </Routes>
+                </div>
+            </div>
+        </div>
     );
 }
 
