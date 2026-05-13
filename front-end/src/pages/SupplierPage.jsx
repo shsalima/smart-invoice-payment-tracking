@@ -56,7 +56,6 @@ export default function SupplierPage() {
     <div className="min-h-screen bg-[#F9F9F8] p-8">
       <SupplierHero loading={loading} openModel={() => setIsModalOpen(true)} />
 
-      {/* Hna fin drna l-grid bach les cartes i-jiw m-stfin fhal image_2c9b34.png */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
         {suppliers.map((supplier) => (
           <SupplierCart key={supplier._id} supplier={supplier} />
@@ -69,7 +68,7 @@ export default function SupplierPage() {
           isOpen={isModalOpen}
         />
       )}
-      {/* <SupplierDetailPage/> */}
+      
     </div>
   );
 }

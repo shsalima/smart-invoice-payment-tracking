@@ -25,24 +25,24 @@ export default function SupplierCart({supplier}){
                     <div>
                         <p className="text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-1">Invoices</p>
                         <p className="text-lg font-bold text-gray-800">
-                            {/* {supplier.invoiceCount || 0} */}
+                          
                         </p>
                     </div>
                     <div>
                         <p className="text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-1">Total Spend</p>
                         <p className="text-lg font-bold text-gray-800">
-                            {/* {supplier.totalSpend?.toLocaleString() || "0,00"} € */}
+                          
                         </p>
                     </div>
                 </div>
             </div>
 
             <div>
-                {/* Progress Bar */}
+                
                 <div className="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
                     <div
                         className="bg-orange-500 h-full rounded-full transition-all"
-                        // style={{ width: `${supplier.paidPercentage || 0}%` }}
+                       
                     ></div>
                 </div>
                 <p className="text-[10px] mt-2 text-gray-400 font-semibold italic">
