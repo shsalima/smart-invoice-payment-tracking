@@ -1,4 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 @import "tailwindcss";
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background-color: #f7f5f2;
+}
+
+.secondary-font {
+    font-family: "DM Serif Display", serif;
+}
 
 .container {
     padding-left: 15px;
@@ -34,4 +45,8 @@
     .container {
         max-width: 1320px;
     }
+}
+
+.main-transition {
+    transition: 0.3s;
 }
