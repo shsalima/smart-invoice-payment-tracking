@@ -17,23 +17,32 @@ export default function SideBar() {
                     <h2 className="text-[12px] text-[#9E9893] uppercase mb-2">
                         Overview
                     </h2>
-                    <button className="bg-[#E8F4ED] text-[#2D6A4F] w-full text-start px-4 py-2 rounded-md flex items-center gap-1 cursor-pointer main-transition">
+                    <Link
+                        to="/dashboard"
+                        className="bg-[#E8F4ED] text-[#2D6A4F] w-full text-start px-4 py-2 rounded-md flex items-center gap-1 cursor-pointer main-transition"
+                    >
                         <RiDashboardLine className="w-[20px]" />
                         <span>Dashboard</span>
-                    </button>
+                    </Link>
                 </div>
                 <div>
                     <h2 className="text-[12px] text-[#9E9893] uppercase mb-2">
                         Management
                     </h2>
-                    <button className="text-[#6B6560] hover:bg-[#F0EDE8] hover:text-[#6B6560] w-full text-start px-4 py-2 rounded-md flex items-center gap-1 cursor-pointer main-transition">
+                    <Link
+                        to="/suppliers"
+                        className="text-[#6B6560] hover:bg-[#F0EDE8] hover:text-[#6B6560] w-full text-start px-4 py-2 rounded-md flex items-center gap-1 cursor-pointer main-transition"
+                    >
                         <RiHome9Line className="w-[20px]" />
                         <span>Suppliers</span>
-                    </button>
-                    <button className="text-[#6B6560] hover:bg-[#F0EDE8] hover:text-[#6B6560] w-full text-start px-4 py-2 rounded-md flex items-center gap-1 cursor-pointer main-transition">
+                    </Link>
+                    <Link
+                        to="/invoices"
+                        className="text-[#6B6560] hover:bg-[#F0EDE8] hover:text-[#6B6560] w-full text-start px-4 py-2 rounded-md flex items-center gap-1 cursor-pointer main-transition"
+                    >
                         <RiBillLine className="w-[20px]" />
                         <span>Invoices</span>
-                    </button>
+                    </Link>
                 </div>
             </div>
             <div className="p-6 border-t border-[#E2DDD8] absolute left-0 bottom-0 w-full">
