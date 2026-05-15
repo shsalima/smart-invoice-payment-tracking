@@ -21,7 +21,7 @@ export default function PaymentHistory() {
   ];
 
   return (
-    <div className="card" style={{ marginTop: "10px" }}>
+    <div className="card">
       {invoices.map((inv) => (
         <div key={inv.ref}>
           <div className="payment-header">
