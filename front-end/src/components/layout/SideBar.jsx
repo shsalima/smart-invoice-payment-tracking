@@ -46,7 +46,7 @@ export default function SideBar() {
                 </div>
             </div>
             <div className="p-6 border-t border-[#E2DDD8] absolute left-0 bottom-0 w-full">
-                <Link to="/">
+                <Link to="/login">
                     <div className="flex items-center gap-3 p-2 rounded-md hover:bg-[#F0EDE8] main-transition">
                         <div className="w-[32px] h-[32px] bg-[#2D6A4F] text-white font-bold rounded-[50%] flex justify-center items-center">
                             JD

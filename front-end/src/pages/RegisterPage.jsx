@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 export default function RegisterPage() {
     return (
-        <div className="h-secree flex justify-center items-center">
+        <div className="flex justify-center items-center">
             <div className="bg-[#fff] border border-[#E2DDD8] rounded-[20px] p-[40px] w-[420px] [box-shadow:0_1px_3px_rgba(0,0,0,0.06),_0_4px_16px_rgba(0,0,0,0.04)]">
                 <h1 className="secondary-font text-[28px] text-center text-[#2D6A4F] mb-2">
                     InvoiceFlow
