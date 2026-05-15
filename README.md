@@ -1,86 +1,228 @@
-# Smart Invoice API
+# Supplier Invoice Management System
 
-In the day-to-day operations of businesses and freelancers, managing supplier invoices quickly becomes complex. It's often difficult to track spending, identify pending or overdue invoices, and gain a clear understanding of supplier relationships.
+A modern React Single Page Application (SPA) designed to help companies and freelancers manage supplier invoices, payments, and expenses efficiently.
 
-**Smart Invoice** is a secure backend RESTful API designed to help users manage their list of suppliers, record and track received invoices, and handle partial or full payments while maintaining strict data isolation.
+The application is connected to a secure backend API using JWT authentication and provides a complete workflow for supplier, invoice, and payment management.
 
-## 🚀 Features
+---
 
--   **Secure Authentication**: JWT-based registration and login system.
--   **Supplier Management**: Complete CRUD operations for managing business partners.
--   **Invoice Tracking**: Automatic status tracking (unpaid, partially paid, paid) and due date management.
--   **Payment Processing**: Record full or partial payments with validation against the total invoice amount.
--   **Data Isolation**: Multi-tenant architecture ensuring clients only access their own data.
--   **Analytics & Dashboard**: Real-time statistics per supplier and overall financial overview.
--   **Admin Oversight**: Dedicated administrative routes to monitor platform-wide activity.
+# Project Objective
 
-## 🛠️ Tech Stack
+The goal of this project is to build a frontend application that:
 
--   **Runtime**: Node.js
--   **Framework**: Express.js
--   **Database**: MongoDB (with Mongoose)
--   **Security**: JSON Web Tokens (JWT), Bcrypt, and Middleware-based Authorization
+- Consumes a secure REST API using JWT authentication
+- Manages global application state
+- Handles protected routes and navigation
+- Dynamically displays and updates data
+- Centralizes frontend business logic
+- Provides a clean and responsive user experience
 
-## 🏗️ Architecture & Constraints
+---
 
--   A **Supplier** belongs to a single customer.
--   An **Invoice** belongs to only one customer and one supplier.
--   **Invoice Statuses**:
-    -   `unpaid`: No payments recorded.
-    -   `partially_paid`: Partial payment received (total < invoice amount).
-    -   `paid`: Total payments equal the invoice amount.
--   **Rules**:
-    -   Invoices can only be modified if they are not fully paid.
-    -   Invoices can only be deleted if no payments are associated with them.
+# Features
 
-## 🛣️ API Endpoints
+## Authentication
 
-### Authentication
+### Routes
+- `/login`
+- `/register`
 
-| Method | Endpoint             | Description                    |
-| :----- | :------------------- | :----------------------------- |
-| POST   | `/api/auth/register` | Register a new client          |
-| POST   | `/api/auth/login`    | Login and obtain JWT token     |
-| GET    | `/api/auth/me`       | Retrieve authenticated profile |
+### Functionalities
+- User registration
+- User login with JWT token retrieval
+- Token storage using `localStorage`
+- Fetch authenticated user profile (`/api/auth/me`)
+- Protected routes using `PrivateRoute`
 
-### Supplier Management
+---
 
-| Method | Endpoint             | Description              |
-| :----- | :------------------- | :----------------------- |
-| POST   | `/api/suppliers`     | Create a new supplier    |
-| GET    | `/api/suppliers`     | List all your suppliers  |
-| GET    | `/api/suppliers/:id` | View a specific supplier |
-| PUT    | `/api/suppliers/:id` | Modify a supplier        |
-| DELETE | `/api/suppliers/:id` | Delete a supplier        |
+## Dashboard
 
-### Invoice Management
+### Route
+- `/`
 
-| Method | Endpoint            | Description                                     |
-| :----- | :------------------ | :---------------------------------------------- |
-| POST   | `/api/invoices`     | Create an invoice (supplierId, amount, dueDate) |
-| GET    | `/api/invoices`     | List all your invoices (with filters)           |
-| GET    | `/api/invoices/:id` | View a specific invoice                         |
-| PUT    | `/api/invoices/:id` | Modify an invoice (if not fully paid)           |
-| DELETE | `/api/invoices/:id` | Delete an invoice (if no payment associated)    |
+### Functionalities
+- Display total invoices
+- Display total expenses
+- Show overdue invoices
+- Global statistics summary from `/api/dashboard`
 
-### Payment Management
+---
 
-| Method | Endpoint                     | Description                            |
-| :----- | :--------------------------- | :------------------------------------- |
-| POST   | `/api/invoices/:id/payments` | Record a payment (amount, paymentDate) |
-| GET    | `/api/invoices/:id/payments` | List the payments for an invoice       |
+## Supplier Management
 
-### Monitoring & Analysis
+### Routes
+- `/suppliers`
+- `/suppliers/:id`
 
-| Method | Endpoint                   | Description                                      |
-| :----- | :------------------------- | :----------------------------------------------- |
-| GET    | `/api/suppliers/:id/stats` | Statistics for a supplier (invoices, amounts, %) |
-| GET    | `/api/dashboard`           | Overview (total invoices, expenses, delays)      |
+### Functionalities
+- Display all suppliers
+- Navigate to supplier details
+- Display supplier information
+- Display supplier statistics (`/api/suppliers/:id/stats`)
+- Create a new supplier
 
-### Admin Routes (Protected)
+---
 
-| Method | Endpoint                           | Description                 |
-| :----- | :--------------------------------- | :-------------------------- |
-| GET    | `/api/admin/clients`               | List all registered clients |
-| GET    | `/api/admin/clients/:id/suppliers` | View a client's suppliers   |
-| GET    | `/api/admin/clients/:id/invoices`  | View a client's invoices    |
+## Invoice Management
+
+### Routes
+- `/invoices`
+- `/invoices/:id`
+
+### Functionalities
+- Display all invoices
+- Filter invoices by status:
+  - unpaid
+  - partially_paid
+  - paid
+- Display invoice amount, due date, and status
+- Display complete invoice details
+- Display supplier information inside invoice details
+- Create new invoices
+
+---
+
+## Payment Management
+
+### Integrated In
+- `/invoices/:id`
+
+### Functionalities
+- Add payments
+- Display payment history
+- Dynamically update invoice payment status
+
+---
+
+# Routing Structure
+
+| Route | Description |
+|---|---|
+| `/` | Dashboard |
+| `/login` | User Authentication |
+| `/register` | User Registration |
+| `/suppliers` | Suppliers List |
+| `/suppliers/:id` | Supplier Details |
+| `/invoices` | Invoices List |
+| `/invoices/:id` | Invoice Details |
+
+---
+
+# Technologies Used
+
+- React.js
+- React Router
+- Context API
+- JavaScript (ES6+)
+- CSS3
+- REST API
+- JWT Authentication
+
+---
+
+# Learning Objectives
+
+This project focuses on:
+
+- Context API state management
+- JWT authentication handling
+- React routing
+- API calls with `useEffect`
+- Component architecture and organization
+- Dynamic rendering and state updates
+
+---
+
+# Team Work
+
+This project was developed collaboratively during a 5-day sprint.
+
+### Project Timeline
+- Start Date: 11/05/2026
+- Submission Deadline: 15/05/2026
+
+---
+
+# Team Contributions
+
+## **Mehdi El-Hajjame**
+Worked on:
+- Invoice page (`/invoices`)
+- Invoice detail page (`/invoices/:id`)
+- Payment management integration
+- Fetching supplier data from the API
+- Displaying supplier information inside invoice detail pages
+- Dynamic payment status updates
+- Invoice UI components and frontend logic
+
+---
+
+## **Ayoub Jabiri**
+Worked on:
+- Login page
+- Register page
+- JWT authentication integration
+- User authentication flow
+
+---
+
+## **Salima**
+Worked on:
+- Supplier pages
+- Supplier management features
+- Supplier details interface
+
+---
+
+## **Khadija**
+Worked on:
+- Dashboard page
+- Dashboard statistics and summary cards
+- Global overview UI
+
+---
+
+# Installation
+
+```bash
+# Clone the repository
+git clone <repository-url>
+
+# Navigate into the project
+cd project-name
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+---
+
+# Backend Requirements
+
+Make sure the backend API is running and properly configured before starting the frontend application.
+
+The frontend communicates with secure API endpoints using JWT authentication.
+
+---
+
+# Future Improvements
+
+- Search functionality
+- Advanced invoice filtering
+- Export invoices to PDF
+- Notifications system
+- Responsive mobile optimization
+- Dark mode support
+
+---
+
+# Authors
+
+- **Mehdi El-Hajjame**
+- **Ayoub Jabiri**
+- **Salima**
+- **Khadija**
