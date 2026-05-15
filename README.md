@@ -152,6 +152,7 @@ Worked on:
 - Invoice detail page (`/invoices/:id`)
 - Payment management integration
 - Fetching supplier data from the API
+- Advanced invoice filtering
 - Displaying supplier information inside invoice detail pages
 - Dynamic payment status updates
 - Invoice UI components and frontend logic
@@ -212,10 +213,8 @@ The frontend communicates with secure API endpoints using JWT authentication.
 # Future Improvements
 
 - Search functionality
-- Advanced invoice filtering
 - Export invoices to PDF
 - Notifications system
-- Responsive mobile optimization
 - Dark mode support
 
 ---
