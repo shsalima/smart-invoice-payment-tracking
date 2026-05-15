@@ -67,46 +67,46 @@ export default function DetailSupplier() {
   
 
     return (
-        <div className="min-h-screen w-full overflow-x-hidden p-8 bg-[#F9F9F8]">
+      <div className="min-h-screen w-full overflow-x-hidden p-8 bg-[#F9F9F8]">
+    
+    <button 
+        onClick={() => navigate('/suppliers')}
+        className="flex items-center text-gray-400 hover:text-gray-600 mb-6 transition-colors font-medium text-sm"
+    >
+        <span className="text-xl mr-1.5">‹</span> Back to Suppliers
+    </button>
+
+    <div className="w-full space-y-8">
+        
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
             
-          
-            <button 
-                onClick={() => navigate('/suppliers')}
-                className="flex items-center text-gray-400 hover:text-gray-600 mb-4 transition-colors"
-            >
-                <span className="text-2xl mr-2">‹</span> Back to Suppliers
-            </button>
-
-            <div className="w-full space-y-8">
-                
-                <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 w-full">
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="w-16 h-16 bg-emerald-50 text-emerald-700 rounded-xl flex items-center justify-center font-bold text-2xl">
-                            {supplier.name ? supplier.name.substring(0, 2).toUpperCase() : ""}
-                        </div>
-                        <div>
-                            <h1 className="text-2xl font-bold text-gray-900">{supplier.name}</h1>
-                            <span className="bg-gray-100 text-gray-500 px-3 py-1 rounded-md text-xs font-medium">Technology</span>
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-y-6 border-t border-gray-50 pt-8">
-                        <div>
-                            <p className="text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-1">Partner Since</p>
-                            <p className="text-gray-700 font-medium">{formatDate(supplier.createdAt)}</p>
-                        </div>
-                    </div>
+            <div className="flex items-center gap-4">
+                <div className="w-14 h-14 bg-emerald-50 text-emerald-700 rounded-xl flex items-center justify-center font-bold text-xl shrink-0">
+                    {supplier.name ? supplier.name.substring(0, 2).toUpperCase() : ""}
                 </div>
-                <SupplierStats/>
-
-      
-
-
-
-
-
-
+                
+                <div>
+                    <h1 className="text-xl font-bold text-gray-900 tracking-tight">{supplier.name}</h1>
+                    <span className="inline-block bg-gray-100 text-gray-500 px-2.5 py-0.5 rounded-md text-[11px] font-medium mt-1">
+                        Technology
+                    </span>
+                </div>
             </div>
+
+            <div className="sm:border-l sm:border-gray-100 sm:pl-8 flex flex-col justify-center">
+                <p className="text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-1">
+                    Partner Since
+                </p>
+                <p className="text-gray-700 font-semibold text-sm bg-gray-50 px-3 py-1.5 rounded-lg inline-block w-fit">
+                    {formatDate(supplier.createdAt)}
+                </p>
+            </div>
+
         </div>
+
+        <SupplierStats />
+
+    </div>
+</div>
     );
 }
