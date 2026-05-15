@@ -294,7 +294,7 @@
   background: #f0ede8;
 }
 /* --------------invoice details page---------------- */
-.info-card {
+.card {
   border: 1px solid #e2ddd8;
   border-radius: 12px;
   background: #ffffff;
@@ -397,4 +397,31 @@
   font-size: 12px;
   color: #9e9893;
   margin-top: 5px;
+}
+/* -------------- history card-------------- */
+.payment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: anchor-center;
+}
+
+.btn-sm {
+  padding: 5px 12px;
+  font-size: 13px;
+}
+.payment-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.payment-item .payment-way {
+  font-size: 12px;
+  color: #9e9893;
+}
+.payment-details {
+  display: flex;
+  flex-direction: column;
 }

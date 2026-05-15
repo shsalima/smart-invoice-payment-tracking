@@ -14,7 +14,7 @@ export default function InvoiceInfo() {
   return (
     <div>
       {invoices.map((inv) => (
-        <div className="info-card">
+        <div className="card">
           <div className="header-info-card">
             <div>
               <div className="supplier-name">{inv.supplier}</div>
