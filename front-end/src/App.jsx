@@ -3,6 +3,7 @@ import SideBar from "./components/layout/SideBar";
 import AppHeader from "./components/layout/AppHeader";
 import HomePage from "./pages/HomePage";
 import { InvoicePage } from "./pages/InvoicePage";
+import InvoiceDetailsPage from "./pages/InvoiceDetailsPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/home" element={<HomePage />} />
             <Route path="/invoices" element={<InvoicePage />} />
+            <Route path="/invoices/:id" element={<InvoiceDetailsPage />} />
           </Routes>
         </div>
       </div>
