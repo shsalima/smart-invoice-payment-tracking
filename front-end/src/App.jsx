@@ -1,26 +1,47 @@
-import { Routes, Route } from "react-router";
+import { Routes, Route, useLocation, useNavigate } from "react-router";
 import SideBar from "./components/layout/SideBar";
 import AppHeader from "./components/layout/AppHeader";
-import HomePage from "./pages/HomePage";
+import RegisterPage from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
+import { UserContext } from "./contexts/UserContext";
+import { useEffect } from "react";
 import SupplierPage from "./pages/SupplierPage";
 import SupplierDetailPage from "./pages/SupplierDetailPage";
 
 function App() {
-    return (
-        <div className="flex">
-            <SideBar />
+    const { pathname } = useLocation();
+    const navigate = useNavigate();
 
-            <div className="flex-1">
-                <AppHeader />
-                <div className="container py-6">
-                    <Routes>
-                        <Route path="/home" element={<HomePage />} />
-                        <Route path="/suppliers" element={<SupplierPage/>}/>
-                        <Route path="/suppliers/:id" element={<SupplierDetailPage/>}/>
-                    </Routes>
+    const authPagesCheck = pathname == "/register" || pathname == "/login";
+
+    const accessToken = localStorage.getItem("accessToken") || null;
+
+    useEffect(() => {
+        if (!accessToken) {
+            navigate("/login");
+        }
+    }, []);
+
+    return (
+        <UserContext.Provider value={{ accessToken: accessToken }}>
+            <div className="flex">
+                {authPagesCheck != true && <SideBar />}
+
+                <div className="flex-1">
+                    {authPagesCheck != true && <AppHeader />}
+                    <div className="container py-6">
+                        <Routes>
+                            <Route path="/register" element={<RegisterPage />} />
+                            <Route path="/login" element={<LoginPage />} />
+                            <Route path="/suppliers" element={<SupplierPage/>}/>
+                            <Route path="/suppliers/:supplierId" element={<SupplierDetailPage/>}/>
+                           
+                            
+                        </Routes>
+                    </div>
                 </div>
             </div>
-        </div>
+        </UserContext.Provider>
     );
 }
 
