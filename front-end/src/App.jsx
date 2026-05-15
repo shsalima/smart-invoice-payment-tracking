@@ -5,6 +5,8 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import { UserContext } from "./contexts/UserContext";
 import { useEffect } from "react";
+import SupplierPage from "./pages/SupplierPage";
+import SupplierDetailPage from "./pages/SupplierDetailPage";
 
 function App() {
     const { pathname } = useLocation();
@@ -29,11 +31,12 @@ function App() {
                     {authPagesCheck != true && <AppHeader />}
                     <div className="container py-6">
                         <Routes>
-                            <Route
-                                path="/register"
-                                element={<RegisterPage />}
-                            />
+                            <Route path="/register" element={<RegisterPage />} />
                             <Route path="/login" element={<LoginPage />} />
+                            <Route path="/suppliers" element={<SupplierPage/>}/>
+                            <Route path="/suppliers/:supplierId" element={<SupplierDetailPage/>}/>
+                           
+                            
                         </Routes>
                     </div>
                 </div>
