@@ -21,12 +21,10 @@ export default function LoginPage() {
     async function handleSubmit(e) {
         e.preventDefault();
 
-        const body = { email: formData.email, password: formData.password };
-
         try {
             const response = await axios.post(
                 `${VITE_API_URL}/auth/login`,
-                body
+                formData
             );
 
             localStorage.setItem("accessToken", response.data.accessToken);
