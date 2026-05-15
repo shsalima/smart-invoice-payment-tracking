@@ -1,7 +1,16 @@
-import { RiBillLine, RiDashboardLine, RiHome9Line } from "@remixicon/react";
+import {
+    RiBillLine,
+    RiDashboardLine,
+    RiHome9Line,
+    RiUserFill,
+} from "@remixicon/react";
 import { Link } from "react-router";
 
 export default function SideBar() {
+    function handleLogout() {
+        localStorage.removeItem("accessToken");
+    }
+
     return (
         <aside className="bg-white w-[250px] h-screen border-r border-[#E2DDD8] relative">
             <div className="flex items-center gap-1 p-6 border-b border-[#E2DDD8]">
@@ -46,16 +55,13 @@ export default function SideBar() {
                 </div>
             </div>
             <div className="p-6 border-t border-[#E2DDD8] absolute left-0 bottom-0 w-full">
-                <Link to="/login">
+                <Link to="/login" onClick={handleLogout}>
                     <div className="flex items-center gap-3 p-2 rounded-md hover:bg-[#F0EDE8] main-transition">
                         <div className="w-[32px] h-[32px] bg-[#2D6A4F] text-white font-bold rounded-[50%] flex justify-center items-center">
-                            JD
+                            <RiUserFill className="w-[18px]" />
                         </div>
                         <div>
-                            <h3 className="text-sm leading-[1]">John Doe</h3>
-                            <span className="text-[13px] text-[#9E9893]">
-                                User
-                            </span>
+                            <h3 className="text-sm">Log out</h3>
                         </div>
                     </div>
                 </Link>

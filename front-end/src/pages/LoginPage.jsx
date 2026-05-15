@@ -23,8 +23,6 @@ export default function LoginPage() {
 
         const body = { email: formData.email, password: formData.password };
 
-        console.log(`${VITE_API_URL}/auth/login`);
-
         try {
             const response = await axios.post(
                 `${VITE_API_URL}/auth/login`,
@@ -39,8 +37,6 @@ export default function LoginPage() {
             );
             setErrorMessage(error.response.data.message);
         }
-
-        console.log(formData);
     }
 
     return (
@@ -105,11 +101,11 @@ export default function LoginPage() {
                         />
                     </div>
                     {errorMessage && (
-                        <p className="text-red-500 mb-4">*{errorMessage}</p>
+                        <p className="text-red-500">*{errorMessage}</p>
                     )}
                     <button
                         type="submit"
-                        className="block w-full bg-[#2D6A4F] text-white text-[14px] px-4 py-2 rounded-md cursor-pointer"
+                        className="block w-full bg-[#2D6A4F] text-white text-[14px] px-4 py-2 mt-6 rounded-md cursor-pointer"
                     >
                         Sign In
                     </button>
