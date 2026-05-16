@@ -1,6 +1,7 @@
 // External Modules
 import "dotenv/config";
 import express from "express";
+import cors from "cors";
 
 // Internal Modules
 import { dbConnect } from "./config/db.js";
@@ -15,6 +16,8 @@ const app = express();
 // Database Connection
 const PORT = process.env.PORT;
 dbConnect();
+
+app.use(cors());
 
 app.use(express.json());
 

@@ -1,11 +1,12 @@
+import { useContext } from "react";
 import { InvoiceHeader } from "../components/InvoicesComponents/invoiceHeader";
 import InvoiceTable from "../components/InvoicesComponents/InvoicesTable";
+import { UserContext } from "../contexts/UserContext";
 
 export function InvoicePage() {
-  // const [data, setData]= useStatep([])
-  // const getData = async()=>{
-  //   const response = await axios.get("http://localhost:5000")
-  // }
+  const { accessToken } = useContext(UserContext);
+
+  console.log(accessToken);
 
   return (
     <div>
