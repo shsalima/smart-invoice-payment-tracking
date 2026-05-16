@@ -5,6 +5,8 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import { UserContext } from "./contexts/UserContext";
 import { useEffect } from "react";
+import { InvoicePage } from "./pages/InvoicePage";
+import InvoiceDetailsPage from "./pages/InvoiceDetailsPage";
 
 function App() {
   const { pathname } = useLocation();
@@ -31,6 +33,8 @@ function App() {
             <Routes>
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/login" element={<LoginPage />} />
+              <Route path="/invoices" element={<InvoicePage/>}/>
+              <Route path="/invoices/:id" element={<InvoiceDetailsPage/>}/>
             </Routes>
           </div>
         </div>

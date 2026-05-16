@@ -20,9 +20,13 @@ const invoiceSchema = new Schema({
         required: true,
     },
     supplierId: {
-        type: Schema.Types.ObjectId,
+        type: String,
         ref: "Supplier",
-        required: true,
+        required: false,
+    },
+        note: {
+        type: String,
+        required: false,
     },
     createdAt: {
         type: Date,

@@ -13,9 +13,9 @@ export const invoiceValidationRules = [
         .withMessage(
             "The invoice amount is required and must be greater than 0"
         ),
-    body("supplierId")
-        .notEmpty()
-        .withMessage("The invoice's supplier id is required"),
+    // body("supplierId")
+    //     .notEmpty()
+    //     .withMessage("The invoice's supplier id is required"),
 ];
 
 export const paymentValidationRules = [

@@ -48,7 +48,7 @@ export const invoicePayment = async (invoiceId, paymentAmount) => {
     if (invoice.amount == invoice.currentAmount) {
         invoice.status = "paid";
     } else {
-        invoice.status = "partially_paid";
+        invoice.status = "partial";
     }
 
     await invoice.save();
