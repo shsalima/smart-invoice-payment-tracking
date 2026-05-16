@@ -1,11 +1,15 @@
 export const statsData = [
   { title: "Invoices", value: 120, subtitle: "Total invoices" },
   { title: "Paid", value: 80, subtitle: "Successfully paid" },
-  { title: "Pending", value: 40, subtitle: "Waiting payments" }
+   { title: "Pending", value: 40, subtitle: "Waiting payments" },
+  { title: "Paid", value: 50, subtitle: "Waiting payments" }
 ];
 
 export const invoicesData = [
   {ref: "INV001", supplier: "ABC Company", amount: 500, due: "2026-05-20", status: "Paid"},
+  {ref: "INV002", supplier: "XYZ Ltd", amount: 300, due: "2026-05-25", status: "Pending"},
+  {ref: "INV002", supplier: "XYZ Ltd", amount: 300, due: "2026-05-25", status: "Pending"},
+  {ref: "INV002", supplier: "XYZ Ltd", amount: 300, due: "2026-05-25", status: "Pending"},
   {ref: "INV002", supplier: "XYZ Ltd", amount: 300, due: "2026-05-25", status: "Pending"}
 ];
 

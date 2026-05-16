@@ -3,6 +3,12 @@ import {invoicesData} from "../data/dashboardMock";
 
 function LatestInvoices(){
     return(
+        <div className="card-table">
+            <div className="nav-table">
+                <h2 className="title">Recent Invoices</h2>
+                <button className="btn"><b>View all →</b></button>
+            </div>
+    
     <table className="TableInvoices">
     <thead>
     <tr>
@@ -27,6 +33,7 @@ function LatestInvoices(){
    
     </tbody>
     </table>
+    </div>
     );
 }
 export default LatestInvoices;

@@ -25,9 +25,9 @@ font-family: "DM Serif Display";
   margin-bottom: 20px;
 }
 .grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
+  display: flex;
+align-items: flex-start;
+  gap: 100px;
 }
 @media (max-width: 900px) {
   .stats {
@@ -35,6 +35,6 @@ font-family: "DM Serif Display";
   }
 
   .grid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
 }

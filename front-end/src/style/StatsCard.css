@@ -6,7 +6,9 @@
   width: 230px;
   transition: 0.3s ease;
   cursor: pointer;
-  border: 1px solid #E2DDD8
+  border: 1px solid #E2DDD8;
+  margin-top:  20px;
+  border-top: 1px solid #2D6A4F ;
 } 
 .card:hover {
   transform: translateY(-5px);
@@ -14,23 +16,23 @@
 }
 
 .card h1 {
-    font-family: "DM Sans";
-  font-size: 12px;
-  color: #555;
+  font-family: "DM Sans";
+  font-size: 19px;
+  color: #9E9893;
   margin-bottom: 10px;
  
 }
 
-.card p{
-    font-family: "DM Sans";
-  font-size: 30px;
+.card .value{
+  font-family: "DM Sans";
+  font-size: 28px;
   font-weight: bold;
   color: #111;
   margin-bottom: 5px;
 }
 
-.subtitle  {
-    font-size: "DM Sans";
-  font-size: 12px;
-  color: #888;
+.card .subtitle  {
+  font-size: "DM Sans";
+  font-size: 19px;
+  color: #9E9893;
 }

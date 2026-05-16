@@ -1,0 +1,28 @@
+.card-TopSuppliers{
+ background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  height: auto;
+  border: 1px solid #E2DDD8;
+  margin-top:  20px;
+}
+.h3{
+font-family: "DM Sans";
+  font-size: 20px;
+  color: #000000;
+  margin-bottom: 10px;
+}
+.supplier-header{
+    display: flex;
+    justify-content: space-between;
+    font-family:"DM Sans" ;
+     font-size: 18px;
+}
+.fill{
+border: 1px solid #2D6A4F;
+border-radius: 12px;
+height: 10px;
+background-color: #2D6A4F;
+}
