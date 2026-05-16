@@ -5,6 +5,8 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import { UserContext } from "./contexts/UserContext";
 import { useEffect } from "react";
+import SupplierPage from "./pages/SupplierPage";
+import SupplierDetailPage from "./pages/SupplierDetailPage";
 import { InvoicePage } from "./pages/InvoicePage";
 import InvoiceDetailsPage from "./pages/InvoiceDetailsPage";
 
@@ -27,20 +29,22 @@ function App() {
       <div className="flex">
         {authPagesCheck != true && <SideBar />}
 
-        <div className="flex-1">
-          {authPagesCheck != true && <AppHeader />}
-          <div className="container py-6">
-            <Routes>
-              <Route path="/register" element={<RegisterPage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/invoices" element={<InvoicePage/>}/>
-              <Route path="/invoices/:id" element={<InvoiceDetailsPage/>}/>
-            </Routes>
-          </div>
-        </div>
-      </div>
-    </UserContext.Provider>
-  );
+                <div className="flex-1">
+                    {authPagesCheck != true && <AppHeader />}
+                    <div className="container py-6">
+                        <Routes>
+                            <Route path="/register" element={<RegisterPage />} />
+                            <Route path="/login" element={<LoginPage />} />
+                            <Route path="/suppliers" element={<SupplierPage/>}/>
+                            <Route path="/suppliers/:supplierId" element={<SupplierDetailPage/>}/>
+                           
+                            
+                        </Routes>
+                    </div>
+                </div>
+            </div>
+        </UserContext.Provider>
+    );
 }
 
 export default App;
