@@ -24,7 +24,6 @@ export function InvoiceHeader() {
       </div>
       {showForm && (
         <NewInvoiceModal
-          // cancelHandler={cancelHandler}
           onClose={() => setShowForm(false)}
         />
       )}

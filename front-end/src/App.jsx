@@ -15,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/home" element={<HomePage />} />
             <Route path="/invoices" element={<InvoicePage />} />
+            <Route path="/invoices/:id" element={</>}
           </Routes>
         </div>
       </div>
