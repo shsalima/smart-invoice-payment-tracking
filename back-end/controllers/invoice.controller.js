@@ -11,12 +11,13 @@ import { getInvoicePayments } from "../services/payment.service.js";
 import { errorResponse } from "../utils/error.response.js";
 
 export const create = async (req, res) => {
-    const { amount, supplierId } = req.body;
+    const { amount, supplierId,note } = req.body;
     try {
         const invoice = await createInvoice({
             amount,
             supplierId,
             clientId: req.user._id,
+            note,
         });
 
         res.status(201).json(invoice);
@@ -28,7 +29,7 @@ export const create = async (req, res) => {
 
 export const getAllInvoices = async (req, res) => {
     // Filter Options
-    const status = req.query.status || ["unpaid", "partially_paid", "paid"];
+    const status = req.query.status || ["unpaid", "partial", "paid"];
     const supplierId = req.query.supplier || undefined;
 
     // Pagination Options

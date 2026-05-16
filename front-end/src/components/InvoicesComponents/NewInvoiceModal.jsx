@@ -10,10 +10,6 @@ export default function NewInvoiceModal({ onClose }) {
   date: "",
   note: "",
 });
-  // function handelAddInvoice(invoice) {
-  //   setInvoicesData((invoice)=>[...invoicesData. invoice])
-  // }
-  console.log('state',invoicesData);
   
   async function submitHandler(e) {
     e.preventDefault();
@@ -28,26 +24,26 @@ export default function NewInvoiceModal({ onClose }) {
       });
       console.log('data sent', res.data);
       onClose();
-
-      
     } catch (error) {
       console.error('failed', error.response.data);
       
     }
     setInvoicesData({
-  reference: "",
-  supplierId: "",
-  description: "",
-  amount: "",
-  date: "",
-  note: "",
-});
+      reference: "",
+       supplierId: "",
+       description: "",
+       amount: "",
+       date: "",
+       note: "",
+    });
   }
 
   function onChangeHandler(e){
     const{name,value}= e.target;
     setInvoicesData({...invoicesData, [name]: value})
   }
+
+  const currentDate = new Date().toISOString().split("T")[0]
   return (
     <div className="overlay-modal">
       <div className="modal">
@@ -95,7 +91,7 @@ export default function NewInvoiceModal({ onClose }) {
             </div>
             <div className="form-group">
               <label className="form-label">Date *</label>
-              <input className="form-input" type="date" name="date" value={invoicesData.date} onChange={(e)=>onChangeHandler(e)}/>
+              <input className="form-input" readOnly type="date" name="date" value={currentDate} onChange={(e)=>onChangeHandler(e)}/>
             </div>
           </div>
 

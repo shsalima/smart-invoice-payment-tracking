@@ -37,7 +37,8 @@ function App() {
                             <Route path="/login" element={<LoginPage />} />
                             <Route path="/suppliers" element={<SupplierPage/>}/>
                             <Route path="/suppliers/:supplierId" element={<SupplierDetailPage/>}/>
-                           
+                            <Route path="/invoices" element={<InvoicePage/>}/>
+              <Route path="/invoices/:id" element={<InvoiceDetailsPage/>}/>
                             
                         </Routes>
                     </div>
