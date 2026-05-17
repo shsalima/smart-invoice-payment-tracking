@@ -29,23 +29,25 @@ function App() {
       <div className="flex">
         {authPagesCheck != true && <SideBar />}
 
-                <div className="flex-1">
-                    {authPagesCheck != true && <AppHeader />}
-                    <div className="container py-6">
-                        <Routes>
-                            <Route path="/register" element={<RegisterPage />} />
-                            <Route path="/login" element={<LoginPage />} />
-                            <Route path="/suppliers" element={<SupplierPage/>}/>
-                            <Route path="/suppliers/:supplierId" element={<SupplierDetailPage/>}/>
-                            <Route path="/invoices" element={<InvoicePage/>}/>
-              <Route path="/invoices/:id" element={<InvoiceDetailsPage/>}/>
-                            
-                        </Routes>
-                    </div>
-                </div>
-            </div>
-        </UserContext.Provider>
-    );
+        <div className="flex-1">
+          {authPagesCheck != true && <AppHeader />}
+          <div className="container py-6">
+            <Routes>
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/suppliers" element={<SupplierPage />} />
+              <Route
+                path="/suppliers/:supplierId"
+                element={<SupplierDetailPage />}
+              />
+              <Route path="/invoices" element={<InvoicePage />} />
+              <Route path="/invoices/:id" element={<InvoiceDetailsPage />} />
+            </Routes>
+          </div>
+        </div>
+      </div>
+    </UserContext.Provider>
+  );
 }
 
 export default App;

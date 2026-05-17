@@ -1,24 +1,45 @@
 import { useState } from "react";
 import "../../css/style.css";
+import { oneInvoiceContext } from "../../pages/InvoiceDetailsPage";
 import AddPaymentBtn from "./AddPaymentBtn";
 import PaymentRow from "./PaymentRow";
 import PaymentModal from "./PaymentModal";
+import { useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router";
+import { useContext } from "react";
 
 export default function PaymentHistory() {
+  const { oneInvoiceData, fetchInvoiceData } = useContext(oneInvoiceContext);
+  const token = localStorage.getItem("accessToken");
+  const { id } = useParams();
   const [showModal, setShowModal] = useState(false);
-  console.log(showModal);
+  const [payment, setPayments] = useState([]);
+  async function fetchPaymentData() {
+    try {
+      const response = await axios.get(
+        `http://localhost:3000/api/invoices/${id}/payments`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      console.log("payments", response.data.payments);
 
-  const invoices = [
-    {
-      ref: "INV-2026-007",
-      supplier: "TechParts SARL",
-      description: "test test tsedf",
-      amount: 333,
-      paid: 3,
-      date: "12 Jun 2026",
-      status: "paid",
-    },
-  ];
+      setPayments(response.data.payments);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  useEffect(() => {
+    fetchPaymentData();
+  }, [id, token]);
+  useEffect(() => {
+    fetchInvoiceData();
+  }, []);
+  const invoices = [oneInvoiceData];
+  console.log("this one: ", oneInvoiceData);
 
   return (
     <div className="card">
@@ -35,9 +56,15 @@ export default function PaymentHistory() {
               <AddPaymentBtn onOpen={() => setShowModal(true)} />
             )}
 
-            {showModal && <PaymentModal onClose={() => setShowModal(false)} />}
+            {showModal && (
+              <PaymentModal
+                onClose={() => setShowModal(false)}
+                fetchPaymentData={fetchPaymentData}
+                fetchInvoiceData={fetchInvoiceData}
+              />
+            )}
           </div>
-          <PaymentRow />
+          <PaymentRow payment={payment} />
         </div>
       ))}
     </div>

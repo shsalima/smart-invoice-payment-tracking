@@ -1,69 +1,87 @@
+import { useContext } from "react";
 import "../../css/style.css";
+import { oneInvoiceContext } from "../../pages/InvoiceDetailsPage";
+
 export default function InvoiceInfo() {
-  const invoices = [
-    {
-      ref: "INV-2026-007",
-      supplier: "TechParts SARL",
-      description: "test test tsedf",
-      amount: 24536,
-      paid: 24536,
-      date: "12 Jun 2026",
-      status: "Unpaid",
-    },
-  ];
+  const { oneInvoiceData } = useContext(oneInvoiceContext);
+
+  console.log("invoice data", oneInvoiceData);
+
+  if (!oneInvoiceData) return <p>Loading...</p>;
+
   return (
-    <div>
-      {invoices.map((inv) => (
-        <div className="card">
-          <div className="header-info-card">
-            <div>
-              <div className="supplier-name">{inv.supplier}</div>
-              <p className="supplier-des">{inv.description}</p>
-            </div>
-            <span className={`badge badge-${inv.status.toLocaleLowerCase()}`}>
-              {inv.status}
-            </span>
-          </div>
-          <div className="divider"></div>
-          <div className="details-flex">
-            <div className="detail-field">
-              <span className="label">Supplier</span>
-              <span className="value">{inv.supplier}</span>
-            </div>
-            <div className="detail-field">
-              <span className="label">Invoice date</span>
-              <span className="value">{inv.date}</span>
-            </div>
-            <div className="detail-field">
-              <span className="label">Amount</span>
-              <span className="value">{inv.amount} DH</span>
-            </div>
-          </div>
-          <div className="divider"></div>
-          <div className="grid-status">
-            <div className="amount-status">
-              <span className="status-value">{inv.amount} DH</span>
-              <span className="status-label">Invoice</span>
-            </div>
-            <div
-              className={`amount-status ${inv.paid === inv.amount ? "green" : "green"}`}
-            >
-              <span className="status-value">{inv.paid} DH</span>
-              <span className="status-label">Paid</span>
-            </div>
-            <div
-              className={`amount-status ${inv.paid === inv.amount ? "green" : "red"}`}
-            >
-              <span className="status-value">{inv.amount - inv.paid} DH</span>
-              <span className="status-label">Remain</span>
-            </div>
-          </div>
-          <div className="progress-bar">
-            <div className="progress-fill"></div>
-          </div>
-          <div className="collected"> (0%) collected</div>
+    <div className="card">
+      <div className="header-info-card">
+        <div>
+          <div className="supplier-name">{oneInvoiceData.supplierName}</div>
+
+          <p className="supplier-des">{oneInvoiceData.description}</p>
         </div>
-      ))}
+
+        <span className={`badge badge-${oneInvoiceData.status?.toLowerCase()}`}>
+          {oneInvoiceData.status}
+        </span>
+      </div>
+
+      <div className="divider"></div>
+
+      <div className="details-flex">
+        <div className="detail-field">
+          <span className="label">Supplier</span>
+          <span className="value">{oneInvoiceData.supplierName}</span>
+        </div>
+
+        <div className="detail-field">
+          <span className="label">Invoice date</span>
+          <span className="value">{oneInvoiceData.date}</span>
+        </div>
+
+        <div className="detail-field">
+          <span className="label">Amount</span>
+          <span className="value">{oneInvoiceData.amount} DH</span>
+        </div>
+      </div>
+
+      <div className="divider"></div>
+
+      <div className="grid-status">
+        <div className="amount-status">
+          <span className="status-value">{oneInvoiceData.amount} DH</span>
+
+          <span className="status-label">Invoice</span>
+        </div>
+
+        <div className="amount-status green">
+          <span className="status-value">{oneInvoiceData.paid} DH</span>
+
+          <span className="status-label">Paid</span>
+        </div>
+
+        <div
+          className={`amount-status ${
+            oneInvoiceData.paid === oneInvoiceData.amount ? "green" : "red"
+          }`}
+        >
+          <span className="status-value">
+            {oneInvoiceData.amount - oneInvoiceData.paid} DH
+          </span>
+          <span className="status-label">Remain</span>
+        </div>
+      </div>
+
+      <div className="progress-bar">
+        <div
+          className="progress-fill"
+          style={{
+            width: `${(oneInvoiceData.paid / oneInvoiceData.amount) * 100}%`,
+          }}
+        ></div>
+      </div>
+
+      <div className="collected">
+        ({Math.round((oneInvoiceData.paid / oneInvoiceData.amount) * 100)}
+        %) collected
+      </div>
     </div>
   );
 }
