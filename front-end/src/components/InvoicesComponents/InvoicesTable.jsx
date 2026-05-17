@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import "../../css/style.css";
-import { InvoiceContext } from "../../pages/InvoicePage";
+import { InvoiceContext } from "../../contexts/InvoiceContext";
 import { useNavigate } from "react-router-dom";
 
 // const invoices = [

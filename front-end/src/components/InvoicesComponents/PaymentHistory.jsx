@@ -39,7 +39,6 @@ export default function PaymentHistory() {
     fetchInvoiceData();
   }, []);
   const invoices = [oneInvoiceData];
-  console.log("this one: ", oneInvoiceData);
 
   return (
     <div className="card">

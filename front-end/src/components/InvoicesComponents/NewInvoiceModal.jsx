@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import "../../css/style.css";
+import { InvoiceContext } from "../../contexts/InvoiceContext";
+
 export default function NewInvoiceModal({ onClose }) {
   const token = localStorage.getItem("accessToken");
   const [supplier, setSupplier] = useState([]);
-  const [invoicesData, setInvoicesData] = useState({
+  const { invoiceData, setInvoiceData } = useContext(InvoiceContext);
+  const [newInvoicesData, setNewInvoicesData] = useState({
     supplierId: "",
     // supplier: "",
     description: "",
@@ -31,8 +34,8 @@ export default function NewInvoiceModal({ onClose }) {
 
   async function submitHandler(e) {
     e.preventDefault();
-    const newInvoice = {...invoicesData };
-    console.log(newInvoice);
+    const newInvoice = { ...newInvoicesData };
+
     try {
       const token = localStorage.getItem("accessToken");
       const res = await axios.post(
@@ -45,11 +48,12 @@ export default function NewInvoiceModal({ onClose }) {
         },
       );
       console.log("data sent", res.data);
+      setInvoiceData([...invoiceData, res.data]);
       onClose();
     } catch (error) {
       console.error("failed", error.response.data);
     }
-    setInvoicesData({
+    setNewInvoicesData({
       // reference: "",
       supplierId: "",
       description: "",
@@ -61,7 +65,7 @@ export default function NewInvoiceModal({ onClose }) {
 
   function onChangeHandler(e) {
     const { name, value } = e.target;
-    setInvoicesData({ ...invoicesData, [name]: value });
+    setNewInvoicesData({ ...newInvoicesData, [name]: value });
     console.log(e.target.value);
   }
 
@@ -81,7 +85,7 @@ export default function NewInvoiceModal({ onClose }) {
                 className="form-input"
                 type="text"
                 placeholder="INV-2026-009"
-                value={invoicesData.reference}
+                value={newInvoicesData.reference}
                 onChange={(e) => onChangeHandler(e)}
               />
             </div>
@@ -90,7 +94,7 @@ export default function NewInvoiceModal({ onClose }) {
               <select
                 className="form-input"
                 name="supplierId"
-                value={invoicesData.supplierId}
+                value={newInvoicesData.supplierId}
                 onChange={(e) => onChangeHandler(e)}
               >
                 <option value="">choose the supplier</option>
@@ -110,7 +114,7 @@ export default function NewInvoiceModal({ onClose }) {
               type="text"
               placeholder="what is this invoice for?"
               name="description"
-              value={invoicesData.description}
+              value={newInvoicesData.description}
               onChange={(e) => onChangeHandler(e)}
             />
           </div>
@@ -122,7 +126,7 @@ export default function NewInvoiceModal({ onClose }) {
                 type="text"
                 placeholder="0.00"
                 name="amount"
-                value={invoicesData.amount}
+                value={newInvoicesData.amount}
                 onChange={(e) => onChangeHandler(e)}
               />
             </div>
@@ -146,7 +150,7 @@ export default function NewInvoiceModal({ onClose }) {
               rows="2"
               placeholder="Optional notes..."
               name="note"
-              value={invoicesData.note}
+              value={newInvoicesData.note}
               onChange={(e) => onChangeHandler(e)}
             ></textarea>
           </div>

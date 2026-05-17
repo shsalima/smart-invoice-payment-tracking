@@ -11,7 +11,7 @@ export default function PaymentRow({ payment }) {
           <span className="badge badge-paid">paid</span>
         </div>
       ))}
-      <div className="divider"></div>
+      {/* <div className="divider"></div> */}
     </div>
   );
 }

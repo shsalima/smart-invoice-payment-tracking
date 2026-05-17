@@ -3,8 +3,7 @@ import { InvoiceHeader } from "../components/InvoicesComponents/invoiceHeader";
 import InvoiceTable from "../components/InvoicesComponents/InvoicesTable";
 import { UserContext } from "../contexts/UserContext";
 import axios from "axios";
-import { createContext } from "react";
-export const InvoiceContext = createContext();
+import { InvoiceContext } from "../contexts/InvoiceContext";
 
 export function InvoicePage() {
   const { accessToken } = useContext(UserContext);
