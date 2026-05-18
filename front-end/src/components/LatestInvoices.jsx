@@ -1,12 +1,15 @@
 import "../style/LatestInvoices.css"
 import {invoicesData} from "../data/dashboardMock";
+import {Link} from "react-router-dom";
 
 function LatestInvoices(){
     return(
         <div className="card-table">
             <div className="nav-table">
                 <h2 className="title">Recent Invoices</h2>
-                <button className="btn"><b>View all →</b></button>
+                <Link to="/invoices">
+                 <button className="btn"><b>View all →</b></button>
+                </Link>
             </div>
     
     <table className="TableInvoices">
