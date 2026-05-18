@@ -29,7 +29,7 @@ function PageDashboard() {
     // }, []);
 
     return (
-        <div className="content">
+        <div className="dashboard">
             <div className="page-header">
                 <header>
                     <h3>
