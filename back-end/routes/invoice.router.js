@@ -34,9 +34,9 @@ invoiceRoutes.use(authenticationCheck);
 invoiceRoutes.post(
     "/",
     authorizationCheck(["client"]),
-    invoiceValidationRules,
+    // invoiceValidationRules,
     dataValidation,
-    supplierExistenceCheck,
+    // supplierExistenceCheck,
     create
 );
 

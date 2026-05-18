@@ -36,9 +36,10 @@ export default function RegisterPage() {
             localStorage.setItem("accessToken", response.data.accessToken);
             navigate("/dashboard", { replace: true });
         } catch (error) {
-            const errorMessage =
-                error.response.data.message ||
-                error.response.data.errors[0].msg;
+      const errorMessage =
+        error.response?.data?.message ||
+        error.response?.data?.errors?.[0]?.msg ||
+        "Something went wrong";
             console.log(
                 `Status: ${error.response.status}, error: ${errorMessage}`
             );

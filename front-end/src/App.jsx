@@ -8,6 +8,8 @@ import { useEffect } from "react";
 import PageDashboard from "./pages/PageDashboard";
 import SupplierPage from "./pages/SupplierPage";
 import SupplierDetailPage from "./pages/SupplierDetailPage";
+import { InvoicePage } from "./pages/InvoicePage";
+import InvoiceDetailsPage from "./pages/InvoiceDetailsPage";
 
 function App() {
     const { pathname } = useLocation();
@@ -52,6 +54,11 @@ function App() {
                             <Route
                                 path="/suppliers/:supplierId"
                                 element={<SupplierDetailPage />}
+                            />
+                            <Route path="/invoices" element={<InvoicePage />} />
+                            <Route
+                                path="/invoices/:id"
+                                element={<InvoiceDetailsPage />}
                             />
                         </Routes>
                     </div>
