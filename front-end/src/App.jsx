@@ -5,6 +5,7 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import { UserContext } from "./contexts/UserContext";
 import { useEffect } from "react";
+import PageDashboard from "./pages/PageDashboard";
 import SupplierPage from "./pages/SupplierPage";
 import SupplierDetailPage from "./pages/SupplierDetailPage";
 
@@ -31,7 +32,7 @@ function App() {
             <div className="flex">
                 {authPagesCheck != true && <SideBar />}
 
-                <div className="flex-1">
+                <div className="flex-1 max-h-screen overflow-y-auto">
                     {authPagesCheck != true && <AppHeader />}
                     <div className="container py-6">
                         <Routes>
@@ -40,6 +41,10 @@ function App() {
                                 element={<RegisterPage />}
                             />
                             <Route path="/login" element={<LoginPage />} />
+                            <Route
+                                path="/dashboard"
+                                element={<PageDashboard />}
+                            />
                             <Route
                                 path="/suppliers"
                                 element={<SupplierPage />}

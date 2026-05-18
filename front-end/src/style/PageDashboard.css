@@ -1,0 +1,38 @@
+.content {
+    padding: 20px;
+    background: #f7f5f2;
+    min-height: 100vh;
+}
+.page-header {
+    margin-bottom: 20px;
+}
+
+.page-header h3 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.page-header p {
+    font-size: 14px;
+    color: #9e9893;
+}
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.grid {
+    display: flex;
+    align-items: flex-start;
+    gap: 100px;
+}
+@media (max-width: 900px) {
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid {
+        flex-direction: column;
+    }
+}
