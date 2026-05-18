@@ -58,7 +58,7 @@ export default function SupplierPage() {
                             />
                         ))
                     ) : (
-                        <p>rah makayn 7ta supplier</p>
+                        <p>No Suppliers were found...</p>
                     )}
                 </div>
             )}
